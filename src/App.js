@@ -1,25 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
+import Home from './components/Home/Home';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom'
+import Webnavbar from './components/Layout/Webnavbar'
 import './App.css';
+
+// Components
+import People from './components/People/People'
+import Personform from './components/Personform/Personform'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Webnavbar />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/addperson">
+          <Personform />
+        </Route>
+        <Route path="/people">
+          <People />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
